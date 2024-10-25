@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas</title>
+    <style>
+        .container{
+            max-width: 400px;
+            margin: auto;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .container:hover {
+            transform: scale(1.15); 
+            background-color: bisque;
+            padding: 2% 2%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+            
+        #contrasena {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            background-color: #676186;
+            color: white;
+            border: none;
+            padding: 1% 1%;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+        }
+
+    </style> 
+</head>
+<body>
+
+<div class="container">
+    <h1>Generador de Contraseñas</h1>
+
+    <label for="numPalabras">Número de palabras:</label>
+    <input type="number" id="numPalabras" value="5" min="1">
+
+    <label for="mayusculas">Comenzar cada palabra en mayúsculas:</label>
+    <input type="checkbox" id="mayusculas">
+
+    <label for="sinRepetir">No repetir palabras:</label>
+    <input type="checkbox" id="sinRepetir">
+
+    <button onclick="generarContrasena()">Generar Contraseña</button>
+
+    <h2>Contraseña Generada:</h2>
+    <p id="contrasena"></p>
+</div>
+
+<script>
+    const diccionario = [
+    "abeja", "avión", "árbol", "amigo", "animal", "azul", "amor", "ángel", "arte", "agua",
+    "bebé", "bicicleta", "barco", "balón", "botella", "barro", "bebida", "boda", "burro", "brisa",
+    "camino", "carro", "casa", "ciudad", "cerdo", "caballo", "cielo", "cereza", "cuchara", "ciervo",
+    "dado", "dedo", "delfín", "dinosaurio", "diamante", "dragón", "dólar", "deseo", "desierto", "duende",
+    "elefante", "estrella", "escuela", "espejo", "escritorio", "espada", "esfinge", "esfera", "esmalte", "espacio",
+    "flor", "fuego", "fiesta", "foca", "felicidad", "familia", "fresa", "fantasma", "fruta", "flauta",
+    "gato", "globo", "guitarra", "ganso", "galaxia", "guante", "girasol", "gente", "golondrina", "glaciar",
+    "héroe", "hacha", "hormiga", "huevo", "huracán", "helicóptero", "historia", "hoja", "herradura", "hotel",
+    "iglesia", "isla", "iguana", "imán", "idea", "internet", "invierno", "imperio", "inteligencia", "insecto",
+    "jirafa", "juguete", "jardín", "jefe", "jaula", "jungla", "joya", "jabón", "joven", "jabalí",
+    "kiwi", "kilómetro", "kilo", "karate", "karaoke", "koala", "karateka", "kayak", "kiosco", "karma",
+    "luna", "libro", "lago", "león", "luz", "lagarto", "limón", "lápiz", "loro", "leche",
+    "montaña", "mar", "miel", "manzana", "mamá", "moto", "mapa", "mesa", "microondas", "mariposa",
+    "nube", "noche", "niño", "naranja", "nariz", "novela", "nota", "nido", "nieve", "nave",
+    "oso", "otoño", "orquídea", "oruga", "oro", "ojo", "oveja", "onda", "obelisco", "orquesta",
+    "pato", "perro", "piedra", "planta", "pelota", "puerta", "plato", "pan", "pájaro", "playa",
+    "queso", "química", "quiosco", "quinto", "quimera", "quimono", "quijote", "quimera", "quarzo", "quebrada",
+    "río", "ratón", "rosa", "reloj", "rayo", "reino", "roca", "rueda", "rana", "robot",
+    "sol", "silla", "sombrero", "sal", "serpiente", "solsticio", "sandía", "salvavidas", "sirena", "selva",
+    "tigre", "taza", "tenedor", "tierra", "tren", "televisión", "teléfono", "toro", "tortuga", "templo",
+    "uvas", "universo", "umbra", "uña", "unicornio", "urraca", "utopía", "urgencia", "uranio", "urbanización",
+    "vaca", "ventana", "viento", "vida", "volcán", "vampiro", "valle", "vaina", "vela", "vapor",
+    "xilófono", "xenón", "xilografía", "xenofobia", "xilofonista", "xilotecnia", "xenón", "xerografía", "xilolito", "xantofila",
+    "yate", "yogur", "yunque", "yogurt", "yacimiento", "yegua", "yogui", "yodo", "yeti", "yuca",
+    "zapato", "zanahoria", "zebra", "zorro", "zafiro", "zanja", "zigzag", "zoológico", "zafiro", "zanate"
+    ];
+
+
+    function generarContrasena() {
+        const numPalabras = parseInt(document.getElementById("numPalabras").value);
+        const mayusculas = document.getElementById("mayusculas").checked;
+        const sinRepetir = document.getElementById("sinRepetir").checked;
+        let palabras = [...diccionario];
+
+        let contrasena = [];
+        for (let i = 0; i < numPalabras; i++) {
+            const indiceAleatorio = Math.floor(Math.random() * palabras.length);
+            let palabra = palabras[indiceAleatorio];
+
+            if (mayusculas) {
+                palabra = palabra.charAt(0).toUpperCase() + palabra.slice(1);
+            }
+
+            contrasena.push(palabra);
+
+            if (sinRepetir) {
+                palabras.splice(indiceAleatorio, 1);
+            }
+        }
+
+        document.getElementById("contrasena").textContent = contrasena.join("");
+    }
+</script>
+
+</body>
+</html>

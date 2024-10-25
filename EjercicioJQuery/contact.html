@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DoveCoin</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="static/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet">
+
+    <style>
+        @media only screen and (max-width: 768px) {
+            .registrationmobile .text-white {
+                color: black !important;
+            }
+            .registrationmobile {
+            background-image: none !important;
+            }
+        }
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(static/img/caruselcontacto.png), no-repeat center center;
+            background-size: cover;
+            }
+
+        .hidden {
+            display: none;
+        }
+        form {
+            background-color: #f9f9f9;
+            padding: 1% 1% ;
+            border-radius: 5px;
+            width: auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 1% ;
+            margin: 2% ;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .text-danger{
+            margin-left: 5%;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light pt-3 d-none d-lg-block ">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-12 text-center text-lg-left mb-2 mb-lg-0">
+                     <div class="d-inline-flex align-items-center w-100 justify-content-between">
+                        <p><i class="fa fa-envelope mr-2"></i>paloma.perezmadridlaguna@usp.ceu.es</p>
+
+                        <p><i class="fa fa-user mr-2 "></i>Ejercicio JQuery Sistemas Web 1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">DOVE</span>COIN</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="indexFull.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">See Nodes</a>
+                        <a href="service.html" class="nav-item nav-link">Transactions</a>
+                        <a href="package.html" class="nav-item nav-link">Send DoveCoin</a>
+                        <a href="package.html" class="nav-item nav-link">Buy DoveCoin</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Log In</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Log In / Register</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Log In Start -->
+    <!-- Formulario oculto inicialmente -->
+    <div class="container-fluid py-5 hidden" id="main-container"> <!-- añadimos class hidden -->
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Log In </h6>
+                <h1>Enter the world of DoveCoins</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-white" style="padding: 2%;">
+                        <div id="success"></div>
+                        <form name="sentLogIn" id="contactForm" novalidate="novalidate">
+                            <div class="form-row">
+                                <div class="control-group col-sm-6">
+                                    <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="control-group col-sm-6">
+                                    <input type="password" class="form-control p-4" id="passwd" placeholder="Password" required="required" data-validation-required-message="Please enter your password" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-4" type="submit" id="submitLoginButton">Sumbmit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Botón para mostrar formulario registro -->
+                    <div class="text-center mt-4">
+                        <button class="btn btn-secondary py-3 px-4" id="showNewFormBtn">Do not have an account? Register Here!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Log In End -->
+
+    <!-- Formulario inicialmente -->
+    <div class="container-fluid py-5" id="newFormContainer">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Register</h6>
+                <h1>Create an account at DoveCoin</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-white" style="padding: 2%;">
+                        <form id="RegisterForm">
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4" id="newName" placeholder="Name and Surnames" required>
+                                <p class="help-block text-danger" id="nameError" style="display: none;"></p> <!-- Mensaje de error -->
+                            </div>  
+                            <div class="control-group">
+                                <input type="email" class="form-control p-4" id="newEmail" placeholder="Email" required>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="tel" class="form-control p-4" id="newPhone" placeholder="Telephone" required>
+                                <p class="help-block text-danger" id="phoneError" style="display: none;"></p> <!-- Mensaje de error -->
+                            </div>
+                            <div class="control-group">
+                                <input type="password" class="form-control p-4" id="newPassword" placeholder="Password" required>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-4" type="submit">Submit</button>
+                                
+                            </div>
+                        </form>
+                         
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-secondary py-3 px-4" type="button" id="hideNewFormBtn"> Already have an account? log in here</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mainContainer = document.getElementById('main-container');
+        const newFormContainer = document.getElementById('newFormContainer');
+        const showNewFormBtn = document.getElementById('showNewFormBtn');
+        const hideNewFormBtn = document.getElementById('hideNewFormBtn');
+        const registerForm = document.getElementById('RegisterForm');
+        const loginForm = document.forms['sentLogIn'];
+
+        // Mostrar el formulario LogIn y ocultar el contenido principal Register
+        showNewFormBtn.addEventListener('click', function() {
+            mainContainer.classList.add('hidden');
+            newFormContainer.classList.remove('hidden');
+        });
+
+        // Ocultar Register y mostrar el Login
+        hideNewFormBtn.addEventListener('click', function() {
+            newFormContainer.classList.add('hidden');
+            mainContainer.classList.remove('hidden');
+        });
+
+        // Enviar datos Register
+        registerForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar recarga de página al enviar
+
+           
+            
+            //Name --> Expresión regular --> al menos dos palabras + solo letras y acentos
+            const namePattern = /^[A-Za-záéíóúÁÉÍÓÚñÑ]+(?:\s+[A-Za-záéíóúÁÉÍÓÚñÑ]+){1,}$/;
+            const newName = document.getElementById('newName').value;
+            const nameError = document.getElementById('nameError'); 
+
+            if (!namePattern.test(newName)) {
+                nameError.textContent = "Please, enter at least two words with only letters and accents, thank you."
+                nameError.style.display = 'block';
+                return; // Detener el envío si la validación falla
+            } else {
+                nameError.style.display = 'none'; // Ocultar el mensaje de error si la validación es exitosa
+            }
+            
+            // Tlf: sólo numeros y sin espacios
+            const phonePattern = /^\d+$/; //solo nums
+            const newPhone = document.getElementById('newPhone').value;
+            const phoneError = document.getElementById('phoneError');
+
+            if (!phonePattern.test(newPhone)) {
+                phoneError.textContent = "Please, enter only numbers without spaces, thank you.";
+                phoneError.style.display = 'block';
+                return; 
+            } else {
+                phoneError.style.display = 'none';
+            } 
+
+            // Todo el registro ok
+            alert("Now you are a DoveCoin User!");
+
+            // Restablecer formulario y volver a mostrar el contenido principal
+            registerForm.reset();
+            newFormContainer.classList.add('hidden');
+            mainContainer.classList.remove('hidden');
+        });
+
+        // Lo mismo con Login
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            alert("Congratulations, you have successfully logged in!");
+        });
+
+    </script>
+
+
+     <!-- Footer Start -->
+     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">Dove</span>Coin</h1>
+                </a>
+                <p>A project created by Paloma Pérez de Madrid to understand how blockchain works.</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Contact me</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/PPerezdeMadrid/dovecoin"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="mailto:pperezdem@icloud.com?subject=Contact%20with%20Paloma%20PML"><i class="fas fa-envelope"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="https://www.linkedin.com/in/palomaperezdemadrid/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-6">
+                <img src="static/img/dovecoinLogo.jpeg" style="width: 50%; height: auto;" />
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white-50">Copyright &copy; . All Rights Reserved.</a>
+                </p>
+            </div>
+            <div class="col-lg-6 text-center text-md-right">
+                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">Paloma Pérez de Madrid</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

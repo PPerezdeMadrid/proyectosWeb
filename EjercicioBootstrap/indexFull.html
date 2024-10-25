@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DoveCoin</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="static/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet">
+
+    <style>
+        @media only screen and (max-width: 768px) {
+            .registrationmobile .text-white {
+                color: black !important;
+            }
+            .registrationmobile {
+            background-image: none !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light pt-3 d-none d-lg-block ">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-12 text-center text-lg-left mb-2 mb-lg-0">
+                     <div class="d-inline-flex align-items-center w-100 justify-content-between">
+                        <p><i class="fa fa-envelope mr-2"></i>pperezdemadrid@icloud.com</p>
+
+                        <p><i class="fa fa-user mr-2 "></i>Ingeniera de Sistemas de Información</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">DOVE</span>COIN</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="indexFull.html" class="nav-item nav-link active">Home</a>
+                        <a href="about.html" class="nav-item nav-link">See Nodes</a>
+                        <a href="service.html" class="nav-item nav-link">Transactions</a>
+                        <a href="package.html" class="nav-item nav-link">Send DoveCoin</a>
+                        <a href="package.html" class="nav-item nav-link">Buy DoveCoin</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="static/img/pannelDoveCoin.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 700px;">
+                            <h4 class="text-white text-uppercase mb-md-3">BlockChain Technology</h4>
+                            <h1 class="display-3 text-white mb-md-5"> Let's buy a DoveCoin</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">DoveCoin MarketPlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="static/img/panelDoveCoin2.png" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 600px;">
+                            <h4 class="text-white text-uppercase mb-md-3">BlockChain Technology</h4>
+                            <h1 class="display-3 text-white mb-md-4">Discover the code of DoveCoin</h1>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Discover now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-prev-icon mb-n2"></span>
+                </div>
+            </a>
+            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-next-icon mb-n2"></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+
+    <!-- Service Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Start</h6>
+                <h1> Features </h1>
+            </div>
+            <div class="row">
+                <!-- Three boxes in the first row -->
+                <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+                    <div class="service-item bg-white text-center py-5 px-4 w-100">
+                        <i class="fa fa-2x fa-route mx-auto mb-4"></i>
+                        <h5 class="mb-2">Connect node</h5>
+                        <p class="m-0">Connect to all the nodes in the network. For this, you need to specify their IP address + port.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+                    <div class="service-item bg-white text-center py-5 px-4 w-100">
+                        <i class="fa fa-2x fa-file-alt mx-auto mb-4"></i>
+                        <h5 class="mb-2">Get chain</h5>
+                        <p class="m-0">View the current chain on your node.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+                    <div class="service-item bg-white text-center py-5 px-4 w-100">
+                        <i class="fa fa-2x fa-hard-hat mx-auto mb-4"></i>
+                        <h5 class="mb-2">Mine Block</h5>
+                        <p class="m-0">Mine a block; it will return the mined block.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add a new row for spacing -->
+            <div class="row">
+                <div class="col-lg-12 mb-4">
+                    <div class="text-center">
+                        <div class="d-inline-block">
+                            <!-- Two boxes centered -->
+                            <div class="row">
+                                <div class="col-lg-6 d-flex align-items-stretch">
+                                    <div class="service-item bg-white text-center py-5 px-4 w-100">
+                                        <i class="fa fa-2x fa-coins mx-auto mb-4"></i>
+                                        <h5 class="mb-2">Add Transaction</h5>
+                                        <p class="m-0">Add a transaction where the sender, receiver, and amount of DoveCoins are defined.</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 d-flex align-items-stretch">
+                                    <div class="service-item bg-white text-center py-5 px-4 w-100">
+                                        <i class="fa fa-2x fa-link mx-auto mb-4"></i>
+                                        <h5 class="mb-2">Replace Chain</h5>
+                                        <p class="m-0">Update the blockchain if another node has a larger chain.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+    <!-- How It Works Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">How It Works</h6>
+                <h1>Where do I Start</h1>
+            </div>
+            <div class="row">
+                <!-- First section with full width boxes -->
+                <div class="col-lg-12 mb-4">
+                    <div class="service-item bg-white text-center py-5 px-4">
+                        <h2 class="mb-2">1º</h2>
+                        <p class="m-0">Register and become a node in the network.</p>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-4">
+                    <div class="service-item bg-white text-center py-5 px-4">
+                        <h2 class="mb-2">2º</h2>
+                        <p class="m-0">Connect to all the nodes to update the current chain.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Additional section with full width boxes -->
+                <div class="col-lg-12 mb-4">
+                    <div class="service-item bg-white text-center py-5 px-4">
+                        <h2 class="mb-2">3º</h2>
+                        <p class="m-0">Now you are ready to add a transaction or mine a block.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- How It Works End -->
+
+
+    <!-- Registration Start -->
+    <div class="container-fluid py-5 registrationmobile" style="margin: 90px 0; background-image: url('static/img/pannelDoveCoin3.png'); background-size: 100% auto; background-repeat: no-repeat; background-position: center;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0" style="padding-left: 17%;">
+                    <div class="mb-4">
+                        <h1 class="text-white"><span class="text-primary">Dove</span>Coin</h1>
+                    </div>
+                    <p class="text-white">Register here to mine blocks, buy and sell DoveCoin.</p>
+                    <ul class="list-inline text-white m-0">
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Buy and sell dovecoins</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>See all the users connected</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>See the actual chain of the DoveCoin world</li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card border-0">
+                        <div class="card-header bg-primary text-center p-4">
+                            <h1 class="text-white m-0">Sign Up Now</h1>
+                        </div>
+                        <div class="card-body rounded-bottom bg-white p-5">
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control p-4" placeholder="Username" required="required"  />
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control p-4" placeholder="Address" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control p-4" placeholder="Port" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control p-4" placeholder="Password" required="required" />
+                                </div>
+
+                                <div>
+                                    <button class="btn btn-primary btn-block py-3" type="submit">Sign Up Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Registration End -->
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">Dove</span>Coin</h1>
+                </a>
+                <p>A project created by Paloma Pérez from Madrid to understand how blockchain works.</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Contact me</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/PPerezdeMadrid/dovecoin"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="mailto:pperezdem@icloud.com?subject=Contact%20with%20Paloma%20PML"><i class="fas fa-envelope"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="https://www.linkedin.com/in/palomaperezdemadrid/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-6">
+                <img src="static/img/dovecoinLogo.jpeg" style="width: 50%; height: auto;" />
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white-50">Copyright &copy; . All Rights Reserved.</a>
+                </p>
+            </div>
+            <div class="col-lg-6 text-center text-md-right">
+                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">Paloma Pérez de Madrid</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="static/lib/easing/easing.min.js"></script>
+    <script src="static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="static/mail/jqBootstrapValidation.min.js"></script>
+    <script src="static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="static/js/main.js"></script>
+</body>
+
+</html>

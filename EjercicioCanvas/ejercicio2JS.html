@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        .container{
+            max-width: 70%;
+            margin: auto;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+            
+        #contrasena {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            background-color: #676186;
+            color: white;
+            border: none;
+            padding: 1% 1%;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: block;
+        }
+
+        canvas{
+            padding: 2% 2%;
+        }
+        #myCanvasAnimated {
+            border: 1px solid black;
+        }
+
+        button{
+            padding: 2% 2%;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+            color: #676186;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+    </style> 
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#canvas-basico">Canvas Básico</a></li>
+            <li><a href="#canvas-animacion">Canvas Animación</a></li>
+            <li><a href="#canvas-imagen">Canvas Imagen</a></li>
+            <li><a href="#canvas-barra">Barra</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Ejercicio Canvas (animación)</h1>
+        <ul>
+            <li> Crear alguna animación o juego sencillo con canvas</li>
+            <li> Experimenta con diferentes elementos vistos en clase</li>
+            <li> Añadir una imagen</li>
+            <li> reacciona al input del usuario</li>
+            <li> Dibujar la animación independientemente del ratio de la tasa de refresco</li>
+        </ul>
+
+        <h2 id="canvas-basico">Canvas estático Básico</h2>
+        <canvas id="myCanvas"> Canvas Estático de una "casa" </canvas>
+        <script>
+            const canvas = document.getElementById('myCanvas');
+            const ctxBasic = canvas.getContext('2d');
+            
+
+            ctxBasic.fillStyle = 'blue';
+            ctxBasic.fillRect(50, 50, 300, 100); 
+
+            ctxBasic.beginPath();
+            ctxBasic.arc(100,50,40,0,2*Math.PI);
+            ctxBasic.fill();
+            ctxBasic.beginPath();
+            ctxBasic.arc(250,50,40,0,2*Math.PI);
+            ctxBasic.fill(); 
+
+            ctxBasic.fillStyle = 'red';
+            ctxBasic.fillRect(60, 60, 80, 80);
+
+            ctxBasic.fillRect(160, 60, 80, 80); 
+
+            ctxBasic.fillRect(260, 60, 30, 80); 
+            
+            ctxBasic.font="15px Serif";
+            ctxBasic.strokeText('Casa de Palo', 130, 20);
+
+        </script>
+
+        <h2 id="canvas-animacion"> Canvas con animación básico </h2>
+        <canvas id="myCanvasAnimated" width="500" height="500"></canvas>
+        <button id="botoncanvas2">Iniciar</button>
+        <script>
+            const canvas2 = document.getElementById('myCanvasAnimated');
+            const ctx = canvas2.getContext('2d');
+            const button = document.getElementById('botoncanvas2');
+        
+            let x = 50;
+            let y = 50;
+            const tamaño = 50;
+            let dx = 3;
+            let dy = 2;
+            const colores = ['red', 'yellow', 'blue', 'green'];
+            let indiceColor = 0;
+            let idAnimacion;
+            let estaAnimando = false;
+        
+            function dibujarCuadrado() {
+                ctx.clearRect(0, 0, canvas2.width, canvas2.height);
+                ctx.fillStyle = colores[indiceColor];
+                ctx.fillRect(x, y, tamaño, tamaño);
+            }
+        
+            function actualizar() {
+                x += dx;
+                y += dy;
+        
+                if (x + tamaño > canvas2.width || x < 0) {
+                    dx *= -1;
+                    indiceColor = (indiceColor + 1) % colores.length;
+                }
+        
+                if (y + tamaño > canvas2.height || y < 0) {
+                    dy *= -1;
+                    indiceColor = (indiceColor + 1) % colores.length;
+                }
+        
+                dibujarCuadrado();
+            }
+        
+            function animar() {
+                actualizar();
+                idAnimacion = requestAnimationFrame(animar);
+            }
+        
+            button.addEventListener('click', () => {
+                if (estaAnimando) {
+                    cancelAnimationFrame(idAnimacion);
+                    button.textContent = 'Iniciar';
+                } else {
+                    animar();
+                    button.textContent = 'Detener';
+                }
+                estaAnimando = !estaAnimando;
+            });
+        
+            dibujarCuadrado(); 
+            </script>
+
+        <h2 id="canvas-imagen">Imagen con Canvas</h2>
+        <canvas id="myImgCanvas" width="600" height="600"></canvas>
+        <script>
+            const canvas3 = document.getElementById('myImgCanvas');
+            const ctx3 = canvas3.getContext('2d');
+            const img = new Image();
+            img.src = 'paloma.jpeg'; 
+
+            img.onload = () => {
+                let imgX = 0;
+                let imgY = 0;
+
+                canvas3.addEventListener('mousemove', (event) => {
+                    const rect = canvas3.getBoundingClientRect();
+                    imgX = event.clientX - rect.left - 800 / 2; // Centrar imagen
+                    imgY = event.clientY - rect.top - 800 / 2;
+                    drawImage();
+                });
+
+                const drawImage = () => {
+                    ctx3.clearRect(0, 0, canvas3.width, canvas3.height);
+                    ctx3.drawImage(img, imgX, imgY);
+                };
+
+                drawImage();
+            };
+        </script>
+
+        <h2 id="canvas-barra">Barra</h2>
+        <p> ¡Ponte encima de la barra!</p>
+        <canvas id="myCanvasSquare" width="600" height="400" style="border: 2px solid black;"></canvas>
+        <script>
+        const canvasSquare = document.getElementById('myCanvasSquare');
+        const ctxSquare = canvasSquare.getContext('2d');
+        const squareSize = 50;
+        let squareX = 0;
+        let opacity = 1;
+        let message = '';
+
+        canvasSquare.addEventListener('mousemove', (event) => {
+            const rect = canvasSquare.getBoundingClientRect();
+            squareX = event.clientX - rect.left - squareSize / 2; // Centrar el cuadrado bajo el ratón
+            opacity = 1; // Restablece la opacidad a 1 cada vez que el ratón se mueve
+            
+            // Comprueba si el cuadrado ha llegado a la izquierda o derecha
+            if (squareX <= 0) {
+                message = 'izquierda';
+            } else if (squareX + squareSize >= canvasSquare.width) {
+                message = 'derecha';
+            } else {
+                message = ''; // no está en los bordes
+            }
+        });
+
+        // dibujar el cuadrado opacidad decreciente
+        function drawSquare() {
+            ctxSquare.clearRect(0, 0, canvasSquare.width, canvasSquare.height);
+            
+            ctxSquare.fillStyle = `rgba(0, 150, 250, ${opacity})`;
+            ctxSquare.fillRect(squareX, canvasSquare.height / 2 - squareSize / 2, squareSize, squareSize);
+            
+            if (message) {
+                ctxSquare.font = '20px Arial';
+                ctxSquare.fillStyle = 'black';
+                ctxSquare.fillText(message, canvasSquare.width / 2 - 30, 50); // Texto centrado arriba
+            }
+            
+            // Reduce la opacidad en cada frame
+            if (opacity > 0) {
+                opacity -= 0.01; // Velocidad de desvanecimiento
+            }
+
+            requestAnimationFrame(drawSquare);
+        }
+
+        drawSquare();
+        </script>
+
+
+    </div>
+
+</body>
+</html>

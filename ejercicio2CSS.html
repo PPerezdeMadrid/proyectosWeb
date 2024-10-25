@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Paloma PML</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+    
+  </head>
+  <body>
+    <div class="menuandbody">
+    
+      <nav class="menu">
+        <h3>Menú</h3>
+        <a href="#introduccion">Introducción</a>
+        <a href="#listaOrdenada">Lista Ordenada</a>
+        <a href="#listaDescripcion">Lista de Descripción</a>
+        <a href="#imagen">Imagen</a>
+        <a href="#tabla">Tabla</a>
+        <a href="#enlace">Enlace</a>
+        <a href="#span">Span</a>
+        <a href="#formulario">Formulario</a>
+        <a href="#canvas">Canvas</a>
+        <a href="#audio">Audio</a>
+        <a href="#video">Vídeo</a>
+      </nav>
+
+      <div class="content">
+       <header>
+        <h1>Paloma Web</h1>
+       </header>
+       
+        <h1>Ejercicio 2 CSS Sistemas Web 1</h1>
+
+        <h2 id="introduccion">Introducción</h2>
+        <ul>
+          <li> Listas sin ordenar</li>
+          <li> Listas ordenadas </li> 
+          <li> Lista de descripción</li>
+          <li> Elemento img</li>
+          <li> Tabla </li>
+          <li> "a" </li>
+          <li> "span" </li>
+          <li> Formularios </li>
+          <li> Canvas </li>
+          <li> Audio </li>
+          <li> Vídeo </li>
+        </ul>
+
+        <h2 id="listaOrdenada">Lista ordenada</h2>
+        <ol>
+          <li>Elemento A</li>
+          <li>Elemento B</li>
+          <li>Elemento C</li>
+        </ol>
+
+        <h2 id="listaDescripcion">Lista de descripción</h2>
+        <dl>
+          <dt>HTML</dt>
+          <dd>Lenguaje de marcado para crear páginas web</dd>
+          <dt>CSS</dt>
+          <dd>Lenguaje de estilos para diseñar páginas web</dd>
+          <dt>JavaScript</dt>
+          <dd>Lenguaje de programación para hacer páginas web interactivas</dd>
+        </dl>
+
+        <h2 id="imagen">Imagen</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML 5.0" width="150">
+
+        <h2 id="tabla">Tabla de ejemplo</h2>
+        <table border="1">
+          <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Ciudad</th>
+          </tr>
+          <tr>
+            <td>Paloma</td>
+            <td>21</td>
+            <td>Madrid</td>
+          </tr>
+          <tr>
+            <td>Javier</td>
+            <td>25</td>
+            <td>Barcelona</td>
+          </tr>
+          <tr>
+            <td>Román</td>
+            <td>22</td>
+            <td>Córdoba</td>
+          </tr>
+        </table>
+
+        <h2 id="enlace">Enlaces Linkedin</h2>
+        <p>
+          Este párrafo debería ser azul
+        </p>
+        <h3>
+          Linkedin App
+        </h3>
+          <p>
+            Este es un enlace de linkedin que debería salir en cursiva
+          </p>
+        <a href="https://www.linkedin.com/in/palomaperezdemadrid/" target="_blank">Linkedin: Paloma PML</a>
+
+        <h2 id="span">Texto con span</h2>
+        <p>Este es un texto en azul dentro de un párrafo.</p>
+
+        <h2 id="formulario">Formulario de Contacto</h2>
+        <form action="#" method="post" style="border:1px solid #000000; padding:10%;">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre"><br><br>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required placeholder="Email"><br><br>
+
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" placeholder="Contraseña"><br><br>
+
+          <label for="number">Número de Teléfono:</label>
+          <input type="number" id="number" name="number" placeholder="Número de Teléfono"><br><br>
+
+          <label for="ciudad">Ciudad favorita:</label><br>
+          <select id="ciudad" name="ciudad">
+            <option value="madrid">Madrid</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="sevilla">Sevilla</option>
+            <option value="valencia">Valencia</option>
+          </select><br><br>
+
+          <label for="mensaje">Mensaje:</label><br>
+          <textarea id="mensaje" name="mensaje" rows="2" cols="50"></textarea><br><br>
+
+          <input type="submit" value="Enviar">
+        </form>
+
+        <br>
+        <h2 id="canvas">Canvas</h2>
+        <canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+        <script>
+          var canvas = document.getElementById('myCanvas');
+          var ctx = canvas.getContext('2d');
+
+          //Rectángulo rojo
+          ctx.fillStyle = "#FF0000";
+          ctx.fillRect(20, 20, 150, 100);
+
+          //línea diagonal verde
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.lineTo(200, 200);
+          ctx.strokeStyle = "#00FF00";
+          ctx.lineWidth = 5;
+          ctx.stroke();
+        </script>
+
+        <h2 id="audio">Audio de ejemplo</h2>
+        <audio controls>
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <h2 id="video">Vídeo de ejemplo</h2>
+        <video width="320" height="240" controls>
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          Tu navegador no soporta el elemento de video.
+        </video>
+
+        <footer>
+            <p>&copy; 2024 Paloma Web. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+  </div>
+</body>
+</html>
+
