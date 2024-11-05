@@ -1,0 +1,17 @@
+{
+  "name": "webscrappingnode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "https-proxy-agent": "^7.0.5",
+    "puppeteer": "^23.7.0"
+  }
+}

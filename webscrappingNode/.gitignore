@@ -1,0 +1,34 @@
+
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+
+# Dependency directories
+jspm_packages/
+
+# Testing
+coverage/
+*.lcov
+
+# IDE and editor specific files
+.idea/
+.vscode/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore local configuration files
+local.json
