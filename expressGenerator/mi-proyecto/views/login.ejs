@@ -1,0 +1,18 @@
+<%- include('header') %>
+
+<h1>Servidor Express</h1>
+<p>Página de <strong> Log In </strong> para iniciar sesión</p>
+
+<form action="/login" method="POST">
+    <div style="margin-bottom: 10px;">
+      <label for="username">Nombre de usuario:</label><br>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <label for="password">Contraseña:</label><br>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit">Iniciar sesión</button>
+</form>
+
+<%- include('footer') %>
