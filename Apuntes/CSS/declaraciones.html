@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Declaraciones</title>
+  <style>
+    /* Ejemplo de margin */
+    .margen {
+      margin: 20px; /* Espacio exterior de 20px en todos los lados */
+      background-color: lightblue;
+    }
+
+    /* Ejemplo de border */
+    .borde {
+      border: 3px solid black; /* Borde de 3px, estilo sólido y color negro */
+      padding: 10px; /* Añade algo de espacio interior */
+      margin-top: 10px; /* Añade espacio arriba */
+    }
+
+    /* Ejemplo de padding */
+    .relleno {
+      padding: 20px; /* Espacio interior de 20px en todos los lados */
+      border: 2px dashed red; /* Borde rojo y punteado */
+    }
+
+    /* Ejemplo de content con ::before y ::after */
+    .contenido::before {
+      content: "Inicio: ";
+      font-weight: bold;
+      color: blue;
+    }
+
+    .contenido::after {
+      content: " - Fin";
+      font-weight: bold;
+      color: red;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Ejemplo de margin -->
+  <div class="margen">
+    Este div tiene un margin de 20px alrededor.
+  </div>
+
+  <!-- Ejemplo de border -->
+  <div class="borde">
+    Este div tiene un borde de 3px sólido y color negro.
+  </div>
+
+  <!-- Ejemplo de padding -->
+  <div class="relleno">
+    Este div tiene un padding de 20px dentro de un borde punteado rojo.
+  </div>
+
+  <!-- Ejemplo de content con ::before y ::after -->
+  <div class="contenido">
+    Este texto tiene contenido antes y después.
+  </div>
+
+</body>
+</html>

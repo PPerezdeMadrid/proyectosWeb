@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de Pseudo-clases, pseudo-elementos</title>
+</head>
+<body>
+
+<style>
+    #container:hover{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: aliceblue;
+        transform: scale(1.1);
+        text-align: center;
+    }
+</style>
+
+<div id="container"> 
+    <h1> Container </h1>
+    <p> Esto es un hover, pasa por aquí!</p>
+</div>
+
+<style>
+    input:focus{
+        color:blueviolet
+    }
+</style>
+<input type="text" placeholder="Input con focus">
+
+
+<style>
+    #firstchild p:first-child{
+        color: red;
+    }
+</style>
+<div id="firstchild" style="border: solid 1px;">
+    <p>Este es el primer párrafo.</p>
+    <p>Este no será rojo.</p>
+</div>
+
+<style>
+    #lastchild p:last-child{
+        color: red;
+    }
+</style>
+<div id="lastchild" style="border: solid 1px;">
+    <p>Este es el primer párrafo.</p>
+    <p>Este es el segundo de color rojo.</p>
+</div>
+
+</body>
+</html>

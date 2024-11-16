@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo de Selectores de Combinación</title>
+</head>
+<style>
+    #descendiente, #hijo, #hijoAdyacente, #hermanoGeneral {
+        border: 2px solid black;
+        margin: 4%;
+        padding: 2%;
+    }
+</style>
+<body>
+<h1> Selectores de Combinación</h1>
+
+<style>
+    #descendiente p{
+        color:green;
+    }
+</style>
+<div id="descendiente">
+    <p> Selecciona todos los elementos que están <strong>dentro</strong> de otro elemento, sin importar el nivel de profundidad. </p>
+    <div>
+        <p> Como este p que está dentro de un div</p>
+        <span> <p> O este p que está dentro de un span dentro del div </p></span>
+    </div>
+</div>
+
+<style>
+    #hijo > p{
+        color:red;
+    }
+</style>
+<div id="hijo">
+    <p> Selecciona solo los elementos que son <strong>hijos directos</strong> de un elemento. </p>
+    <div>
+        <a href="www.ceu.es"> Esto es un enlace a la web del CEU </a>
+        <p> Como este p que está dentro de un div</p>
+        <span> <p> O este p que está dentro de un span dentro del div </p></span>
+    </div>
+</div>
+
+<style>
+    #hijoAdyacente + p {
+        color: orange;
+    }
+</style>
+
+<div id="hijoAdyacente">
+    <p> Selecciona el <strong>hermano inmediato</strong> que aparece después del elemento especificado.</p>
+    <p>Todo esto está dentro del div #hijoAdyacente</p>
+</div>
+<p> Pero esto está FUERA del div #hijoAdyacente  e inmediatamente después</p>
+<p> Esto tb pero no debería de ponerse de color naranja ya que no es el elemento que está inmediatamente después</p>
+
+<style>
+    #hermanoGeneral ~ p{
+        color:blueviolet;
+    }
+</style>
+<div id="hermanoGeneral">
+    <p> Selecciona todos los <strong>elementos hermanos</strong> que vienen después de un elemento especificado, sin importar si son adyacentes.</p>
+</div>
+<p>Este texto será morado.</p>
+<p>Este también será morado.</p>
+<span>Este no será afectado porque no es un p.</span>
+
+
+</body>
+</html>
