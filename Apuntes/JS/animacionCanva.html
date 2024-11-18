@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación en Canvas</title>
+</head>
+<body>
+    <canvas id="miCanvas" width="500" height="500"></canvas>
+
+    <script>
+        // Obtener el canvas y el contexto 2D
+        const canvas = document.getElementById('miCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Variables para la animación
+        let x = 0; // Posición horizontal del círculo
+        const radius = 20; // Radio del círculo
+
+        // Función para limpiar el canvas y dibujar el círculo
+        function dibujarFrame() {
+            // Limpiar el canvas antes de dibujar
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar un círculo en la nueva posición
+            ctx.beginPath();
+            ctx.arc(x, 250, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+
+            // Mover el círculo hacia la derecha
+            x += 2; // Mover 2 px por frame
+
+            // Si el círculo se sale del canvas, reiniciar su posición
+            if (x > canvas.width) {
+                x = 0;
+            }
+
+            // Llamar a requestAnimationFrame para el siguiente frame
+            requestAnimationFrame(dibujarFrame);
+        }
+
+        // Iniciar la animación
+        requestAnimationFrame(dibujarFrame);
+    </script>
+</body>
+</html>
