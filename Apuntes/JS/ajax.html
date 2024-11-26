@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Example</title>
+</head>
+<body>
+    <h1>Ejemplo de AJAX</h1>
+    <button id="fetchData">Cargar datos</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('fetchData').addEventListener('click', function() {
+            // Crear un objeto XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud (método GET, URL del servidor)
+            xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts/1', true);
+
+            // Configurar lo que se hace al completar la solicitud
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    document.getElementById('result').innerHTML = `
+                        <h2>${data.title}</h2>
+                        <p>${data.body}</p>
+                    `;
+                } else {
+                    document.getElementById('result').innerText = 'Error al cargar los datos.';
+                }
+            };
+
+            // Enviar la solicitud
+            xhr.send();
+        });
+    </script>
+</body>
+</html>

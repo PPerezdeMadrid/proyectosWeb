@@ -845,11 +845,418 @@ $("#p1").siblings();
 ```
 ---
 ## Strict Mode
+Variante restringifa de JS:
+- La semántica es diferente
+- Puede funcionar de forma diferente en los navegadores
+- Cambios:
+    + Elimina los fallos silenciosos --> para que manden errores
+    + Soluciona fallos que dificultan la optmización
+    + Prohibe sintaxis --> q pueda ser definida en futuras versiones ECMAscript
+- Se usa automáticamente en modulos y className
+- Para todo el script usar `"use strict";`
+
+```javascript
+function funcionSinStrict(){
+    x = 10;
+    console.log(x); // Se va a imprimir, x es una var
+}
+
+function funcionConStrict(){
+    "use strict";
+    try{
+        x = 10; //Va a dar error porq x no está definido
+    } catch(error){
+        console.log("error en modo estricto: ", error.message)
+    }
+}
+
+// NO se puede usar en una función con param por DEFECTO
+function funcionConStrict(x=10){
+    "use strict"; // ERROR
+    console.log(x);
+    
+}
+```
+- No se pueden duplicar parámetros en una función
+    ```javascript
+    function funcDuplicados(x,x){ // ERROR
+        console.log(x)
+    }
+    ```
+
+### Módulos
+- Separan el código en  bloques --> importar/exportar
+- Archivos de extensión --> `.msj` y tb los `.js`
+- Características:
+    + Automáticamente usan modo stricto
+    + Para usar otros módulos es necesario utlizar un módulo 
+    + Sólo se ejecutan una vex (aunq lo hayas referenciado N veces)
+    + Las características imoprtadas no están disponibles en el alcance global
+    + Varibales globales --> sí están disponibles en los módulos
+
+Para una funcion: 
+```html
+<head>
+    <script type="module" src="main.js"> </script>
+</head>
+<!-- No hace falta defer, los módulos lo aplican automáticamente >
+```
+
+`mimodulo.js`
+```javascript
+export const nombre = "Paloma";
+
+export function saludar(){
+    console.log(`Hola, ${nombre})
+}
+```
+`app.js`
+```javascript
+// Importar el módulo
+import {nombre, saludar} from './mimodulo.js'; // AL principio o al final
+console.log(nombre); // paloma
+saludar(); // Hola, paloma
+```
+
+```javascript
+import{nombre as name,saludar} from './mimodulo.js'; // se pueden renombrar
+import * as Square from './mimodulo.js'; // Importar todo dentro de un objeto
+console.log(Square.nombre); // paloma
+```
+
+### Clases 
+- Plantilla para crear Objetos
+- fFunciona como una función especual
+- Basada en prototypes
+- Se ejec en modo stricto
+
+```javascript
+class Persona{
+    constructor(nombre, edad){
+        this.nombre = nombre; // Field
+        this.edad; // Field
+        //this.#id = id; Atr PRIVADO
+    }
+
+    mostrarInfo(){
+        console.log(`Nombre: ${this.nombre}, Edad: ${this.edad}`);    
+    }
+}
+
+// Crear una persona
+const persona1 = new Persona('paloma', 21);
+persona1.mostrarInfo(); // Nombre: paloma, Edad: 21
+```
+
+Herencia con extend:
+```javascript
+class Estudiante extends Persona{
+    constructor(nombre, edad, curso)
+    // Llamamo al constructor de la clase base (Persona)
+    super(nombre, edad);
+    this.curso = curso; // Nuevo field
+}
+```
+
+Class Expressions:
+```javascript
+const Animal = class{
+    constructor(tipo){
+        this.tipo = tipo;
+    }
+}
+```
+
+Gettters y Settters:
+```javascript
+class Persona{
+    cosntructor(nombre, edad){
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    // Getter para el nombre
+    get nombre(){
+        return this._nombre;
+    }
+
+    set nombre(nuevoNombre){
+        if(nuevoNombre.length > 0){
+            this._nombre = nuevoNombre;
+        }else{
+            console.log("El nuevo nombre está vacío!!!");
+        }
+    }
+}
+
+//Uso
+const persona2 = new Persona('Sol', 50);
+console.log(persona2.nombre); // Imprime: "Undefined"
+persona2.nombre = 'Constanza';
+console.log(persona2.nombre); // Imprime: "Constanza"
+```
+
+---
+
+## Ajax
+Asynchronous JavaScript and XML
+- No es una tecnología, es una integración de diferentes tecnologías (HTML/XML, CSS, JS, DOM, JSON, ...)
+- Busca actualizar la información sin recargar la página
+- `XMLHttpRequest` Obtiene datos de una URL (No solo sirve para XML)
+
+```javascript
+// 1. Generar el objeto de XMLHttpRequest
+const xhr = XMLHttpRequest();
+
+// 2. Asignar un callback para manejar la respuesta cuando la petición cambie de estado
+xhr.onreadystatechange = function(){
+    if(xhr.readyState == 4 && xhr.status == 200){ // "4" Completado y "200" Éxito
+        conosle.log("Respuesta recibida: ", xhr.responseText);
+    }
+};
+
+// 3. Inicializar la petición (Método, URL, asíncrono)
+xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+
+// 4. Enviar la petición
+xhr.send();
+```
+
+```javascript
+// Más opciones
+xhr.timeout
+xhr.setRequestHeader
+xhr.abort
+xhr.error
+xhr.timeout
+```
+
+Ejemplo con html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Example</title>
+</head>
+<body>
+    <h1>Ejemplo de AJAX</h1>
+    <button id="fetchData">Cargar datos</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('fetchData').addEventListener('click', function() {
+            // Crear un objeto XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+
+            // Configurar la solicitud (método GET, URL del servidor)
+            xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts/1', true);
+
+            // Configurar lo que se hace al completar la solicitud
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    document.getElementById('result').innerHTML = `
+                        <h2>${data.title}</h2>
+                        <p>${data.body}</p>
+                    `;
+                } else {
+                    document.getElementById('result').innerText = 'Error al cargar los datos.';
+                }
+            };
+
+            // Enviar la solicitud
+            xhr.send();
+        });
+    </script>
+</body>
+</html>
+```
+---
+
+## Promise
+Problema del callback: Se nos pueden anidar y puede ser un follón
+Promesas:
+- Objetos que representan q se completará una operación asíncrona
+- Les asocias un callback en vez de pedírselo f(x) por f(x). 
+- Estados: `Pending`, `Fullfilled`, `Rejected`
+
+```javascript
+// Simular una operación asíncrona con una promesa
+function obtenerDatos() {
+    return new Promise((resolver, rechazar) => {
+        setTimeout(() => {
+            const exito = true; // Cambia a false para simular un error
+            if (exito) {
+                resolver("Datos cargados correctamente");
+            } else {
+                rechazar("Error al cargar los datos");
+            }
+        }, 1000); // Simular 1 segundo de retraso
+    });
+}
+
+// Usar la promesa
+obtenerDatos()
+    .then((resultado) => {
+        console.log(resultado); // Si se resuelve
+    })
+    .catch((error) => {
+        console.error(error); // Si se rechaza
+    });
+```
+
+Encadenamiento (`chaining`) de promesas:
+```javascript
+function pasoUno() {
+    return new Promise((resolver) => {
+        setTimeout(() => {
+            console.log("Paso 1: Datos iniciales obtenidos");
+            resolver("Datos del paso 1");
+        }, 1000);
+    });
+}
+
+function pasoDos(datosDelPasoUno) {
+    return new Promise((resolver) => {
+        setTimeout(() => {
+            console.log(`Paso 2: Procesando ${datosDelPasoUno}`);
+            resolver("Resultados del paso 2");
+        }, 1000);
+    });
+}
+
+function pasoTres(datosDelPasoDos) {
+    return new Promise((resolver) => {
+        setTimeout(() => {
+            console.log(`Paso 3: Finalizando con ${datosDelPasoDos}`);
+            resolver("Proceso completo");
+        }, 1000);
+    });
+}
+
+// Encadenar las promesas
+pasoUno()
+    .then((resultadoUno) => {
+        return pasoDos(resultadoUno);
+    })
+    .then((resultadoDos) => {
+        return pasoTres(resultadoDos);
+    })
+    .then((resultadoTres) => {
+        console.log(`Resultado final: ${resultadoTres}`);
+    })
+    .catch((error) => {
+        console.error("Error en el proceso:", error);
+    });
+
+```
+
+Ejecutar N promesas:
+- Ejecución contínua si se han resuelto todo
+- Falla en cuanto falla una
+```javascript
+// Simular promesas
+function tarea(nombre, tiempo, falla = false) {
+    return new Promise((resolver, rechazar) => {
+        setTimeout(() => {
+            if (falla) {
+                rechazar(`Tarea ${nombre} falló`);
+            } else {
+                resolver(`Tarea ${nombre} completada`);
+            }
+        }, tiempo);
+    });
+}
+
+// Crear un array de promesas
+const promesas = [
+    tarea("A", 1000), // Tarea A tarda 1 segundo
+    tarea("B", 2000), // Tarea B tarda 2 segundos
+    tarea("C", 1500, true), // Tarea C falla después de 1.5 segundos
+    tarea("D", 500) // Tarea D tarda 0.5 segundos
+];
+
+// Ejecutar todas las promesas
+Promise.all(promesas)
+    .then((resultados) => {
+        console.log("Todas las tareas completadas:", resultados);
+    })
+    .catch((error) => {
+        console.error("Una de las tareas falló:", error);
+    });
+```
+
+## Fetch 
+- API para obtener recursos
+- Evolución de XMLHttpRequest
+- Basado en `promises`
+
+```javascript
+fetch("diccionario.txt")
+    .then((result) => result.text())
+    .then(processData);
+
+function processData(result){
+    let palabras = result.split("\n");
+    console.log(palabras.length);
+}
+```
+
+También te permite hacer un post
+```javascript
+const data = {name: 'paloma', surname:'Pérez de Madrid', age: 21}
+
+const options = {
+    method = "POST",
+    headers = {"Content-Type": "application/json"}, 
+    body = JSON.stringify(data)
+}
+
+const URL = "127.0.0.1:5002"
+fetch(URL, options)
+    .then((result) => console.log("Enviado con éxito"))
+    .catch(e) => console.log("Error: ", e);
+```
+
+## Async/Await
+- `Async` Asocia una función asíncrona a un nombre
+```javascript
+async function obtenerDatos(){
+    const respuesta = await fetch("https://jsonplaceholder.typicode.com/posts/3")
+    const datos = await repsuesta.json(); // COnvertir a JSON
+    console.log(datos);
+}
+```
+- `Await` permite usar código asíncrono con promesas como si fuera síncrono
+    + Pausa la ejecución del resto del código hasta que se resuelva la promesa
+    + Se pueda usar try/catch
+    + Tiene que usarse **dentro** de una función async o en el TOP de un módulo
+
+```javascript
+async function esperarImprimir() {
+    console.log("Esperando información...");
+    
+    // Simular la espera de datos con una promesa
+    const info = await new Promise((resolver) => {
+        let contador = 0;
+        const intervalo = setInterval(() => {
+            console.log("Hola");
+            contador++;
+            // Simula recibir la información después de 5 "Hola"
+            if (contador === 5) {
+                clearInterval(intervalo); // Detener "Hola"
+                resolver("¡Información recibida!");
+            }
+        }, 1000); // cada segundo
+    });
+
+    
+    console.log(info);
+}
 
 
-
-
-
-
-
+esperarYImprimir();
+```
 

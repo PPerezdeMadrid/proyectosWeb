@@ -1,0 +1,40 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Archivos de entorno
+.env
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Archivos de sesión
+*.pid
+*.seed
+
+# Directorios generados
+/dist
+/build
+/.next
+
+# Archivos temporales
+*.swp
+*.swo
+.DS_Store
+
+# Archivos de configuración de IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de la base de datos (si corresponde)
+*.sqlite
+*.db
+
+# Otros
+coverage/
