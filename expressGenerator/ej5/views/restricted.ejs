@@ -1,0 +1,10 @@
+<%- include('header') %>
+<div class="container ml-5">
+    <h1>Servidor Express</h1>
+    <p>Bienvenido a la página <spam style="color: red;"> Restringida </spam></p>
+    <% if (username) { %>  
+        <h2>Bienvenido, <%= username %>!</h2>
+        <p>Solo los usuarios autenticados pueden ver esta página.</p>
+    <% } %>
+</div>
+<%- include('footer') %>

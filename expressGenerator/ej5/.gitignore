@@ -1,0 +1,67 @@
+# Node.js modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Dependency directories
+bower_components/
+
+# Build output
+/dist
+/build
+/tmp
+/temp
+
+# npm package lock file
+package-lock.json
+
+# Yarn integrity file
+.yarn-integrity
+
+# PM2 logs and files
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Test coverage
+coverage/
+
+# Debug files
+*.code-workspace
+
+# Misc
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+
+# Visual Studio Code
+.vscode/
+
+# VS Code settings folder
+.settings/
+
+# TypeScript
+*.tsbuildinfo
