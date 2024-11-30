@@ -8,17 +8,6 @@ var app = require('../app');
 var debug = require('debug')('ejemploexpressgenerator:server');
 var http = require('http');
 const { Server } = require("socket.io");
-const session = require('express-session');
-const sharedSession = require('express-socket.io-session'); // Para compartir sesión
-
-// Configuración de la sesión
-const sessionMiddleware = session({
-  secret: 'CLAVE',
-  resave: false,
-  saveUninitialized: true,
-});
-
-app.use(sessionMiddleware);
 
 
 /**
