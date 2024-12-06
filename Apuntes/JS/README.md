@@ -1257,6 +1257,16 @@ async function esperarImprimir() {
 }
 
 
-esperarYImprimir();
+esperarImprimir();
+```
+Salida:
+```bash
+Esperando información...
+Hola
+Hola
+Hola
+Hola
+Hola
+¡Información recibida!
 ```
 
