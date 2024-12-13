@@ -1,4 +1,38 @@
 # Apuntes JavaScript
+# Índice
+
+1. [Elementos Básicos de JS](#elementos-básicos-de-js)
+   - [Defer y Async](#defer-y-async)
+   - [Interacción](#interacción)
+   - [Variables y Constantes](#variables-y-constantes)
+   - [Operadores](#operadores)
+   - [Let vs Var](#let-vs-var)
+   - [Conversiones](#conversiones)
+   - [Condicionales](#condicionales)
+   - [Funciones](#funciones)
+   - [Objetos](#objetos)
+
+2. [JQuery](#jquery)
+   - [Uso de JQuery](#uso-de-jquery)
+   - [Selectores](#selectores)
+   - [Eventos](#eventos)
+   - [CSS y Efectos](#css-y-efectos)
+   - [Manipulación del DOM](#manipulación-del-dom)
+
+3. [Strict Mode](#strict-mode)
+
+4. [Módulos](#módulos)
+
+5. [Clases](#clases)
+
+6. [Ajax](#ajax)
+
+7. [Promesas](#promesas)
+
+8. [Fetch](#fetch)
+
+9. [Async/Await](#asyncawait)
+
 
 ## Elementos Básicos de JS
 
