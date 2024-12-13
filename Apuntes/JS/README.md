@@ -85,6 +85,16 @@ console.log(5 % 2) // Resto de 5/2, imprimirá 1
 
 ### Let vs Var
 En general se recomienda **NO** usar var. 
+
+| **Aspecto**                     | **`var`**                                                                 | **`let`**                                                             |
+|----------------------------------|---------------------------------------------------------------------------|------------------------------------------------------------------------|
+| **Alcance**                     | Tiene un alcance de función: es accesible dentro de toda la función donde fue declarada, sin importar el bloque. | Tiene un alcance de bloque: solo es accesible dentro del bloque donde se declaró (por ejemplo, dentro de un `if` o `for`). |
+| **Re-declaración**              | Se puede redeclarar en el mismo ámbito sin errores.                        | No permite la redeclaración en el mismo ámbito (arroja un error).      |
+| **Inicialización**              | Su valor es `undefined` por defecto si no se inicializa explícitamente.    | También es `undefined` por defecto, pero no se puede usar antes de ser declarada (zona temporal muerta). |
+| **Hoisting**                    | Es "elevada" al inicio de su ámbito, pero su valor será `undefined` hasta que se inicialice. | También es elevada, pero no se puede acceder a ella antes de su declaración (zona temporal muerta). |
+| **Ámbito global**               | Si se declara en el ámbito global, se convierte en una propiedad del objeto global (`window` en navegadores). | No se convierte en una propiedad del objeto global si se declara en el ámbito global. |
+| **Bucles y closures**           | Puede causar problemas en bucles con closures debido a que no respeta el ámbito de bloque. | Se comporta correctamente en bucles, manteniendo el ámbito de bloque en cada iteración. |
+
 - **Let** --> variable dentro del bloque. 
     ```javascript
     if(true){
