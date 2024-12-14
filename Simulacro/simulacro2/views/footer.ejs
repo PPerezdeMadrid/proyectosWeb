@@ -1,0 +1,65 @@
+<style>
+    footer{
+        background-color: antiquewhite;
+        text-align: center;
+        padding: 1%;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+</style>
+<footer id="cookiesFooter">
+    <h1> Uso de las cookies </h1>
+    <p> La UE nos obliga a bla bla bla bla bla</p>
+    <div style="display:inline">
+        <button onclick="aceptarCookies()"> Aceptar </button>
+        <button onclick='location.href="https://google.com"'> Rechazar</button>
+    </div>
+    <script>
+        const cookie_info = sessionStorage.getItem('AcceptCookies');
+        const footer = document.getElementById("cookiesFooter");
+
+        window.addEventListener('load', (event) => {
+            if (cookie_info){
+                footer.style.display = "none";
+            }
+        });
+
+        fetch('/cookies-info', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.accepted) {
+                    console.log('El usuario ya había aceptado las cookies.');
+                    footer.style.display = "none";
+                } else {
+                    console.log('El usuario no ha aceptado las cookies.');
+                }
+            })
+            .catch(error => console.error('Error al verificar las cookies:', error));
+
+        function aceptarCookies(){
+            footer.style.display = "none";
+
+            sessionStorage.setItem('AcceptCookies', true);
+            
+            fetch('/accept-cookies', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ AcceptCookies: true }) 
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => console.error('Error:', error));
+
+        }
+    </script>
+</footer>
+</body>
+</html>

@@ -1,4 +1,3 @@
-var createError = require('http-errors');
 var express = require('express');
 var session = require('express-session');
 var path = require('path');
