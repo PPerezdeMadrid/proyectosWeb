@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+<h1> Canvas y EasterEggs</h1>
+<canvas id="canvas1"> Canva Número Uno</canvas>
+<script>
+    let canvas = document.getElementById("canvas1");
+    let ctx1 = canvas.getContext("2d");
+    let img = new Image();
+    img.onload = function(){
+        // Canvas e img mismo ancho y alto
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Dibujar img
+        ctx1.drawImage(img, 0, 0)
+
+        // Dibujamos un Círculo
+        ctx1.beginPath();
+        ctx1.arc(600,140,40,0,2*Math.PI); 
+        //  ctx1.arc(x,y,tamaño,0,2*Math.PI);
+        ctx1.fillStyle = "white";
+        ctx1.fill();
+    }
+    img.src="jardin.jpg";
+    
+    //Mousemove --> Cuando el usuario está dentro del canvas
+    canvas.addEventListener("mousemove", function(event) {
+        // Coordenadas del ratón relativas al canvas
+        let rect = canvas.getBoundingClientRect();
+        let mouseX = event.clientX - rect.left;
+        let mouseY = event.clientY - rect.top;
+
+        ctx1.font = "40px Arial";
+        ctx1.fillText("Hola!!!", 10, 50);
+
+        ctx1.beginPath();
+        ctx1.arc(mouseX, mouseY, 40, 0, 2 * Math.PI);
+        ctx1.fillStyle = "black";
+        ctx1.fill();
+        });
+
+</script>
+</body>
+</html>

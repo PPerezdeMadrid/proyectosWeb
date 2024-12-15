@@ -31,3 +31,19 @@ Añade un botón para que se registre el usuario:
     + Teléfono: Solo números
     + Contraseña: Al menos 8 caracteres, una mayúscula, una minúscula y un número
 - Si todo es válido que aparezca un mensaje confirmándolo
+
+
+Plantilla Base para el HTML:
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio X</title>
+</head>
+<body>
+
+</body>
+</html>
+```
