@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio de Z-Index</title>
+  <style>
+
+    .container {
+    width: 100%;
+    }
+
+    /* Cuadro de texto */
+    .box {
+    background-color: lightblue;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    z-index: 1;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+   
+    }
+
+    /* Botón */
+    .btn {
+    background-color: green;
+    color: white;
+    position: absolute;
+    top: 140px;
+    left: 125px;
+    z-index: 2;
+    }
+
+    /* Imagen */
+    .img {
+        width: 200px;
+        height: 200px;
+        border: 1px solid black;
+        z-index: 3;
+        position: absolute;
+        top: 150px;
+        left: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box" id="box1">
+      <p>Cuadro de texto</p>
+    </div>
+    <button class="btn" id="btn1">Botón</button>
+    <img src="https://via.placeholder.com/150" alt="Imagen de ejemplo" class="img" id="img1">
+  </div>
+</body>
+</html>

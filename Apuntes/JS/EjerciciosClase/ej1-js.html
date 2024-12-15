@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Contraseñas</title>
+    <style>
+        form{
+            background-color: antiquewhite;
+            margin: 5%  5%;
+            padding: 5%;
+            display: grid;
+        }
+    </style>
+</head>
+<body>
+    <h1> Generador de Contraseña </h1>
+    <form>
+        <label for="numero">Número de Palabras:</label>
+        <input type="number" id="numeroPalabras" name="numeroPalabras" />
+
+        <label for="mayusculas"> Comenzar por Mayúsculas </label>
+        <input type="checkbox" id="mayusc" name="mayusc">
+
+        <label for="NoRepPalabras"> No repetir palabras</label>
+        <input type="checkbox" id="NoRepPalabras" name="NoRepPalabras">
+
+        <button onclick="generarContrasena()" type="button"> Generar </button>
+    </form>
+    <div id="resultado"  style="background-color: antiquewhite; justify-content: center;">
+
+    </div>
+    <script>
+        const diccionario = [
+            "abeja", "avión", "árbol", "amigo", "animal", "azul", "amor", "ángel", "arte", "agua",
+            "bebé", "bicicleta", "barco", "balón", "botella", "barro", "bebida", "boda", "burro", "brisa",
+            "camino", "carro", "casa", "ciudad", "cerdo", "caballo", "cielo", "cereza", "cuchara", "ciervo",
+            "dado", "dedo", "delfín", "dinosaurio", "diamante", "dragón", "dólar", "deseo", "desierto", "duende",
+            "elefante", "estrella", "escuela", "espejo", "escritorio", "espada", "esfinge", "esfera", "esmalte", "espacio",
+            "flor", "fuego", "fiesta", "foca", "felicidad", "familia", "fresa", "fantasma", "fruta", "flauta",
+            "gato", "globo", "guitarra", "ganso", "galaxia", "guante", "girasol", "gente", "golondrina", "glaciar",
+            "héroe", "hacha", "hormiga", "huevo", "huracán", "helicóptero", "historia", "hoja", "herradura", "hotel",
+            "iglesia", "isla", "iguana", "imán", "idea", "internet", "invierno", "imperio", "inteligencia", "insecto",
+            "jirafa", "juguete", "jardín", "jefe", "jaula", "jungla", "joya", "jabón", "joven", "jabalí",
+            "kiwi", "kilómetro", "kilo", "karate", "karaoke", "koala", "karateka", "kayak", "kiosco", "karma",
+            "luna", "libro", "lago", "león", "luz", "lagarto", "limón", "lápiz", "loro", "leche",
+            "montaña", "mar", "miel", "manzana", "mamá", "moto", "mapa", "mesa", "microondas", "mariposa",
+            "nube", "noche", "niño", "naranja", "nariz", "novela", "nota", "nido", "nieve", "nave",
+            "oso", "otoño", "orquídea", "oruga", "oro", "ojo", "oveja", "onda", "obelisco", "orquesta",
+            "pato", "perro", "piedra", "planta", "pelota", "puerta", "plato", "pan", "pájaro", "playa",
+            "queso", "química", "quiosco", "quinto", "quimera", "quimono", "quijote", "quimera", "quarzo", "quebrada",
+            "río", "ratón", "rosa", "reloj", "rayo", "reino", "roca", "rueda", "rana", "robot",
+            "sol", "silla", "sombrero", "sal", "serpiente", "solsticio", "sandía", "salvavidas", "sirena", "selva",
+            "tigre", "taza", "tenedor", "tierra", "tren", "televisión", "teléfono", "toro", "tortuga", "templo",
+            "uvas", "universo", "umbra", "uña", "unicornio", "urraca", "utopía", "urgencia", "uranio", "urbanización",
+            "vaca", "ventana", "viento", "vida", "volcán", "vampiro", "valle", "vaina", "vela", "vapor",
+            "xilófono", "xenón", "xilografía", "xenofobia", "xilofonista", "xilotecnia", "xenón", "xerografía", "xilolito", "xantofila",
+            "yate", "yogur", "yunque", "yogurt", "yacimiento", "yegua", "yogui", "yodo", "yeti", "yuca",
+            "zapato", "zanahoria", "zebra", "zorro", "zafiro", "zanja", "zigzag", "zoológico", "zafiro", "zanate"
+            ];
+            
+        function generarContrasena(){
+            const numeroPalabras = parseInt(document.getElementById("numeroPalabras").value); // .value para INT
+            const mayuscula = document.getElementById("mayusc").checked; // .checked para CHECKBUTTON
+            const NoRepPalabras = document.getElementById("NoRepPalabras").checked;
+            const resultado = document.getElementById("resultado");
+            
+            let contrasena = [];
+            let indicesYaUsados = [];
+            for(let i = 0; i < numeroPalabras; i++){
+                //Coger un índice aleatorio
+                let indice;
+                do {
+                    indice = Math.floor(Math.random() * diccionario.length);
+                } while (NoRepPalabras && indicesYaUsados.includes(indice));
+
+                palabraSelecc = diccionario[indice];
+                // Primera Mayúscula
+                if(mayuscula){
+                    palabraSelecc = palabraSelecc[0].toUpperCase() + palabraSelecc.substring(1);
+                }
+                if(NoRepPalabras){
+                    indicesYaUsados.push(indice); // PUSH no append!
+                }
+                contrasena.push(palabraSelecc);
+            }
+            resultado.textContent = contrasena.join("");
+        }
+    </script>
+</body>
+</html>

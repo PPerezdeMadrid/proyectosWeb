@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid Layout</title>
+  <style>
+    .grid-container{
+        display: grid;
+        grid-template-rows: 100px 1fr 50px; /* Altura de filas */
+        grid-template-columns: 30% 70%; /* Ancho de columnas */
+        grid-template-areas: 
+            "header header"
+            "nav article"
+            "footer footer"; /* Define el layout por áreas */
+        }
+    header{
+        background-color: antiquewhite;
+        grid-area: header; /* área HEADER (lo pone ya arriba como un header) */
+    }
+    nav{
+        background-color: brown;
+        grid-area: nav; /* Asocia con el área 'nav' */
+    }
+    article{
+        background-color: aqua;
+        grid-area: article; /* Asocia con el área 'article' */
+    }
+    footer{
+        background-color: black;
+        color:white;
+        grid-area: footer; /* Asocia con el área 'footer' */
+        height: 100%;
+    }
+    .footer-largo{
+        display: flex;
+        justify-content: space-around; /* Algo de espacio entre medias */
+        
+    }
+
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <header>Header del ejercicio 2</header>
+    <nav>
+        <p> Inicio </p>
+        <p> Proyecto </p>
+        <p> Contacta con nosotros </p>
+        <p> Perfil</p>
+    </nav>
+    <article>
+        <h1> Año Nuevo, ¿La gran fiesta?</h1>
+        <p> Se dice que año nuevo es una gran fiesta bla bla bla bla bla</p>
+    </article>
+    <footer>
+        <div class="footer-largo">
+             <p> Footer diseñado por PPM </p>
+            <a href="https://es.linkedin.com/in/palomaperezdemadrid"> Mi linkedin </a>
+            <p> Esto sigue siendo el footer</p>
+        </div>
+    </footer>
+  </div>
+</body>
+</html>
