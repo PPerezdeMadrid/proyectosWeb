@@ -1,0 +1,71 @@
+<style>
+    .cookies-banner{
+        background-color: lightgray;
+        padding: 2% 2%;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .cookies-banner a{
+        text-decoration: none;
+        color:black;
+    }
+</style>
+
+<% if (cookieAccepted) { %>
+    <p> <span id="cookieInfo">Cookies True <%= (cookieAccepted) %> </span></p>
+<% }else { %>
+    <p> <span id="cookieInfo"> Cookies False <%= (cookieAccepted) %> </span></p>
+    <section class="cookies-banner" id="cookies-banner" style="display:inline">
+        <h1> Uso de Cookies </h1>
+        <p> Nos vemos obligados a informarte del uso de cookies necesarias para que funcione esta aplicación web</p>
+        <div class="botones-cookies">
+            <button onclick="aceptarCookies()"> Aceptar </button>
+            <button><a href="http://www.google.com">Cancelar</a></button>
+        </div>
+        <script>
+            const banner = document.getElementById("cookies-banner");
+
+            // Comprobar si ha aceptado antes las cookies
+            fetch('/info-cookies') //GET
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('El usuario ya había aceptado las cookies.');
+                        console.log(`data: ${data.success}`)
+                        banner.style.display = "none";
+                    } else {
+                        console.log('El usuario no ha aceptado las cookies.');
+                        banner.style.display = "inline";
+                    }
+                })
+                .catch(error => console.error('Error al verificar las cookies:', error));
+
+
+            // Pulso botón "Aceptar"
+            function aceptarCookies(){
+                fetch('/guardar-info-cookies', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Preferencia de cookies guardada:', data);
+                    banner.style.display = "none";
+
+                })
+                .catch(error => {
+                    console.error('Error al guardar la preferencia de cookies:', error);
+                });
+
+            }
+
+        </script>
+    </section>
+<% } %>
+</body>
+</html>
