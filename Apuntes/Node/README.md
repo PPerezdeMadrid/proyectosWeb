@@ -402,7 +402,186 @@ Es **importante** no bloquear el Event Loop con tareas que tarden mucho en ejecu
 - Intentar dividir las tareas más intensivas
 
 ## Ficheros
+### Módulo Path
+El módulo path se utiliza para trabajar con rutas de archivos y directorios.
+```javascript
+const path = require('path');
+console.log(path.dirname('/home/user/file.txt')); // '/home/user'
+console.log(path.sep); // '/', en Linux/Unix
+console.log(path.normalize('/home/user/../file.txt')); // '/home/file.txt'
+console.log(path.join('/home', 'user', 'file.txt')); // '/home/user/file.txt'
+console.log(path.resolve('file.txt')); // Ruta absoluta de 'file.txt'
+console.log(path.basename('/home/user/file.txt')); // 'file.txt'
+console.log(path.extname('/home/user/file.txt')); // '.txt'
+```
+
+### Módulo fs
+El módulo fs proporciona funciones para manejar el sistema de archivos.
+```javascript
+const fs = require('fs');
+fs.access('file.txt', fs.constants.F_OK, (err) => console.log(err ? 'No existe' : 'Existe')); // Comprueba existencia
+fs.appendFile('file.txt', 'Hello, world!\n', (err) => { if (!err) console.log('Texto añadido'); }); // Añade texto
+fs.open('file.txt', 'r', (err, fd) => { if (!err) fs.close(fd, () => console.log('Archivo cerrado')); }); // Abre y cierra archivo
+fs.copyFile('file.txt', 'file_copy.txt', (err) => { if (!err) console.log('Archivo copiado'); }); // Copia archivo
+fs.mkdir('new_folder', (err) => { if (!err) console.log('Directorio creado'); }); // Crea directorio
+fs.open('file.txt', 'r+', (err, fd) => { if (!err) console.log('Abierto en modo r+'); }); // Abre con permisos específicos
+fs.readdir('.', (err, files) => { if (!err) console.log(files); }); // Lee directorio
+fs.readFile('file.txt', 'utf8', (err, data) => { if (!err) console.log(data); }); // Lee archivo
+fs.realpath('file.txt', (err, resolvedPath) => { if (!err) console.log(resolvedPath); }); // Ruta absoluta real
+fs.rename('file.txt', 'new_file.txt', (err) => { if (!err) console.log('Archivo renombrado'); }); // Renombra archivo
+fs.rmdir('new_folder', (err) => { if (!err) console.log('Directorio eliminado'); }); // Elimina directorio
+fs.stat('file.txt', (err, stats) => { if (!err) console.log(stats.isFile()); }); // Información de archivo
+
+
+// Promesas 
+const fsp = require('fs').promises;
+async function example() {
+  try {
+    await fsp.writeFile('example.txt', 'Contenido de ejemplo'); // Escribe archivo
+    const content = await fsp.readFile('example.txt', 'utf8'); // Lee archivo
+    console.log(content); // 'Contenido de ejemplo'
+  } catch (err) {
+    console.error(err);
+  }
+}
+example();
+```
 
 ## Peticiones HTTP
+GET, PUT, DELETE, ... --> Paquetes `http` y `https`
+```javascript
+const https = require('https');
+const options = {
+  hostname: 'www.google.com',
+  port: 443,
+  path: '/',
+  method: 'GET'
+};
+const req = https.request(options, res => { 
+  console.log(`statusCode: ${res.statusCode})`);
+  res.on('data', d =>{
+    process.stdout.write(d);
+  });
+});
 
+req.on('error', error =>{
+  console.error(error);
+});
+
+req.end();
+```
+Podemos usar `http.request`, `http.get`, ...
+
+Ejemplo de Servidor con GET:
+```javascript
+const https = require('https');
+
+// URL a la que se hará la solicitud GET
+const url = 'https://jsonplaceholder.typicode.com/posts/1';
+
+https.get(url, (res) => {
+  let data = '';
+
+  // Recibe los datos en fragmentos (chunks)
+  res.on('data', (chunk) => {
+    data += chunk; // Concatenamos los fragmentos
+  });
+
+  // Una vez que se reciben todos los datos, procesamos la respuesta
+  res.on('end', () => {
+    console.log('Respuesta completa recibida:');
+    console.log(JSON.parse(data)); // Mostramos los datos recibidos como un objeto
+  });
+
+}).on('error', (e) => {
+  console.error(`Error al realizar la solicitud: ${e.message}`);
+});
+```
+
+Ejemplo de Servidor con POST:
+```javascript
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  // Si el método de la petición es POST
+  if (req.method === 'POST') {
+    let body = '';
+
+    // Escucha los datos enviados en el cuerpo de la petición
+    req.on('data', chunk => {
+      body += chunk; // Concatenamos los datos recibidos
+    });
+
+    // Una vez recibidos todos los datos, procesamos la petición
+    req.on('end', () => {
+      console.log('Datos recibidos:', body); // Imprimimos los datos en consola
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({ message: 'Datos recibidos correctamente', data: JSON.parse(body) }));
+    });
+
+    // Manejo de posibles errores en la recepción de los datos
+    req.on('error', (err) => {
+      console.error('Error al recibir los datos:', err);
+      res.statusCode = 500;
+      res.end(JSON.stringify({ error: 'Error en el servidor' }));
+    });
+  } else {
+    // Si la petición no es POST, respondemos con un error 405
+    res.statusCode = 405;
+    res.end(JSON.stringify({ error: 'Método no permitido' }));
+  }
+});
+
+// El servidor escucha en el puerto 3000
+server.listen(3000, () => {
+  console.log('Servidor escuchando en http://localhost:3000');
+});
+```
 ## Express
+- Web Framework
+- Permite definir métodos HTTP, Rutas, Middleware
+- Unopinonates (no impone una estructura o forma de trabajar)
+  + No define el template engine
+  + No define la base de datos
+
+Proceso de instalación: 
+```bash
+mkdir mi-proyecto
+cd mi-proyecto
+npm install -y
+npm install express 
+```
+
+### **1. Usar `npx express-generator`**:
+Genera un proyecto Express sin instalar nada globalmente:
+
+```bash
+npx express-generator mi-proyecto
+cd mi-proyecto
+npm install
+npm start
+```
+
+### **2. Instalar `express-generator` globalmente**:
+Instala el generador de Express globalmente:
+
+```bash
+npm install -g express-generator
+express mi-proyecto
+cd mi-proyecto
+npm install
+npm start
+```
+
+### **3. Generar proyecto con EJS**:
+Crea un proyecto Express usando **EJS** como motor de plantillas:
+
+```bash
+express -v ejs mi-proyecto
+cd mi-proyecto
+npm install
+npm start
+```
+
+---

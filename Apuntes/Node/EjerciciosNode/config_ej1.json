@@ -1,0 +1,10 @@
+{
+    "interval": 5,
+    "metrics": [
+      "cpu",
+      "memory",
+      "uptime",
+      "node_uptime"
+    ]
+  }
+  
