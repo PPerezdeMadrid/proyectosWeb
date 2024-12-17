@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "express": "^4.21.2",
+    "express-generator": "^4.16.1",
     "os-utils": "^0.0.14"
   }
 }

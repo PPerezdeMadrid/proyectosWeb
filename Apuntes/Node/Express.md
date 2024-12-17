@@ -5,10 +5,12 @@
 1. **Generar un proyecto Express con EJS**:
 
    ```bash
+   npm install express-generator #sudo si no funciona
    express -v ejs mi-proyecto
    cd mi-proyecto
    npm install
    ```
+Alternativa: `npx express-generator -v ejs mi-proyecto`
 
 2. **Instalar dependencias**:
    ```bash

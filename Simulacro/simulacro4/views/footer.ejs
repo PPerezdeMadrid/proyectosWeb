@@ -1,0 +1,34 @@
+<% if (typeof(CookiesAceptadas) == 'undefined' ||(CookiesAceptadas !== true) ) { %>
+<section id="cookie-banner">
+  <h2> Uso de Cookies</h2>
+  <p> Nos vemos obligados a informarte del uso de cookies necesarias para que funcione esta aplicación web.</p>
+  <div class="botones-cookies">
+    <button onclick="aceptarCookies()"> Aceptar </button>
+    <a href="https://ww.google.com"><button> Rechazar </button></a>
+  </div>
+  <script>
+    const banner = document.getElementById("cookie-banner");
+
+    function aceptarCookies(){
+        fetch('/acepta-cookies')
+            .then(response => response.text())
+            .then(data => {
+                if(data){
+                    banner.style.display = "none";
+                    console.log("Cookies guardadas")
+                }else{
+                    console.log(data);
+                    console.error("Ha habido un problema guardando las cookies")
+                }
+            });
+    }
+  </script>
+</section>
+<% } %>
+<% if (CookiesAceptadas == true) { %>
+    <p> Cookies aceptadas</p>
+<% } else {%>
+    <p> Cookies NO aceptadas</p>
+<% } %>
+</body>
+</html>

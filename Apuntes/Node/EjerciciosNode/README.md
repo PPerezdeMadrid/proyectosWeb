@@ -23,6 +23,7 @@ Crea un servidor en node.js que:
 
 ## Ejercicio 4
 Crea un servidor con una página inicial, login y restricted con express.
+(No lo voy a hacer, experiencia con el simulacro y con la práctica final)
 
 ## Ejercicio 5
 Integra en el ejercicio 5 un chat:
