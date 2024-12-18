@@ -1,0 +1,82 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+section{
+  background-color: antiquewhite;
+  padding: 2%;
+}
+
+nav li{
+  display: inline; 
+  margin-right: 20px
+}
+
+nav li a{
+  text-decoration: none;
+  color: black;
+}
+
+#cookie-banner{
+  padding: 2%;
+  background-color: rgba(240, 128, 128, 0.8); /* LightCoral con 80% de opacidad */
+  text-align: center;
+  position:fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Chats */
+
+.chats form{
+  margin-top: 5%;
+  padding: 2%;
+  background-color: beige;
+}
+
+.chat label, .chats input, .chats button {
+  display: block; /* Hace que los elementos ocupen toda la línea */
+  width: 100%;
+  margin: 2%;
+}
+
+.imprimir-mensajes{
+  background-color: lightgray;
+  padding:2%;
+}
+
+.imprimir-mensajes li{
+  color:black;
+  list-style-type: none;
+}
+
+
+.user-otro{
+  text-align: left;
+  margin: 2%;
+}
+
+.user-login{
+  text-align: right;
+  margin: 2%;
+}
+
+.mensaje-otro{
+  background-color: lightseagreen;
+  border: 1px solid black;
+  width:40%;
+  padding:1%;
+}
+
+.mensaje-mio{
+  background-color: lightgoldenrodyellow;
+  border: 1px solid black;
+  width:40%;
+  padding:1%;
+  margin-left: 60%;
+}

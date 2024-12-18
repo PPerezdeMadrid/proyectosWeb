@@ -1,0 +1,34 @@
+<%- include('header') %>
+<div class="container ml-5" style="padding: 2rem;">
+    <h1>Servidor <%= title %></h1>
+    <p>Bienvenido al chat, <span id="username"><%= user.username %></span></p>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/javascripts/chat.js" defer></script>
+    
+    <div class="chats">
+        <ul class="imprimir-mensajes">
+            <!-- Mensajes de Respuesta -->
+            <!-- de otros: tex-align; left
+            <li class="user-otro"> 
+                <div class="mensaje-otro">
+                    Mario: Hola!!
+                </div>
+            </li> -->
+            <!-- Mios: text-align: right
+            <li class="user-login"> 
+                <div class="mensaje-mio">
+                    Paloma: Hola!!
+                </div>
+            </li> -->
+        </ul>
+        <form id="chat-form">
+            <label for="mensaje">Escribe tu mensaje</label>
+            <input type="text" name="message" id="message">
+            <button type="submit">Enviar </button>
+        </form>
+    </div>
+</div>
+<%- include('footer') %>
+
+
+

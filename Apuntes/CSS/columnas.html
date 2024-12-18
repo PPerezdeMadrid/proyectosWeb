@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Equipo</title>
+</head>
+<body>
+    <style>
+    .miembros{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+        gap: 10px; /* Espacio entre los elementos */
+    }
+    .miembros p{
+        border: 1px solid black;
+    }
+    </style>
+    <h1>Equipo de Trabajo GRID</h1>
+    <div class="miembros">
+        <p><strong>Miembro 1:</strong> Ana García - Líder de Proyecto</p>
+        <p><strong>Miembro 2:</strong> Juan Pérez - Desarrollador</p>
+        <p><strong>Miembro 3:</strong> María López - Diseñadora UX</p>
+        <p><strong>Miembro 4:</strong> Carlos Sánchez - Analista de Datos</p>
+    </div>
+    <hr>
+    <div class="miembros">
+        <p><strong>Miembro 1:</strong> Ana García - Líder de Proyecto</p>
+        <p><strong>Miembro 2:</strong> Juan Pérez - Desarrollador</p>
+        <p><strong>Miembro 3:</strong> María López - Diseñadora UX</p>
+        <p><strong>Miembro 4:</strong> Carlos Sánchez - Analista de Datos</p>
+        <p><strong>Miembro 5:</strong> Pedro González - Q&A Engineer</p>
+    </div>
+
+    <br>
+    <div style="background-color: antiquewhite; width: 100%; padding: 2% 0%;"></div>
+    <style>
+        .team-container {
+            display: flex;
+            flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea si no hay espacio */
+            gap: 10px; /* Espaciado entre los elementos */
+        }
+        .team-container p {
+            flex: 1 1 calc(33.33% - 10px); /* Tres columnas adaptables */
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* mirar apuntes */
+        }
+    </style>
+    <h1>Equipo de Trabajo FLEX</h1>
+    <div class="team-container">
+        <p>Miembro 1: Ana García - Líder de Proyecto</p>
+        <p>Miembro 2: Juan Pérez - Desarrollador</p>
+        <p>Miembro 3: María López - Diseñadora UX</p>
+        <p>Miembro 4: Carlos Sánchez - Analista de Datos</p>
+        <p>Miembro 5: Sofía Martínez - Marketing</p>
+        <p>Miembro 6: Diego Torres - QA Engineer</p>
+        <p>Miembro 7: Pedro González - DevOps Engineer</p>
+    </div>
+    <hr>
+    <div class="team-container">
+        <p>Miembro 1: Ana García - Líder de Proyecto</p>
+        <p>Miembro 2: Juan Pérez - Desarrollador</p>
+        <p>Miembro 3: María López - Diseñadora UX</p>
+        <p>Miembro 4: Carlos Sánchez - Analista de Datos</p>
+        <p>Miembro 5: Sofía Martínez - Marketing</p>
+        <p>Miembro 6: Diego Torres - QA Engineer</p>
+    </div>
+    <hr>
+    <div class="team-container">
+        <p>Miembro 1: Ana García - Líder de Proyecto</p>
+        <p>Miembro 2: Juan Pérez - Desarrollador</p>
+        <p>Miembro 3: María López - Diseñadora UX</p>
+        <p>Miembro 4: Carlos Sánchez - Analista de Datos</p>
+        <p>Miembro 5: Sofía Martínez - Marketing</p>
+        <p>Miembro 6: Diego Torres - QA Engineer</p>
+        <p>Miembro 7: Pedro González - DevOps Engineer</p>
+        <p>Miembro 8: Ana Mallamas - AI Developer</p>
+    </div>
+</body>
+</html>
+

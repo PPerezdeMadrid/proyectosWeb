@@ -1,0 +1,17 @@
+<%- include('header') %>
+<div class="container ml-5">
+    <h1>Servidor <%= title %></h1>
+    <p>Haz login!!!</p>
+</div>
+<form action="/login" method="POST">
+    <label for="username"> Nombre de Usuario</label>
+    <input type="text" name="username" id="username">
+
+    <label for="password"> Contraseña </label>
+    <input type="password" name="password" id="password">
+
+    <button type="submit"> Enviar </button>
+</form>
+
+<%- include('footer') %>
+
